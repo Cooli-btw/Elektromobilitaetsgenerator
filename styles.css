@@ -1,0 +1,494 @@
+    /* latin */
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      src: url(https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrJJfecg.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    /* Quelle: https://wiki.selfhtml.org/wiki/HTML/Tutorials/Google-Fonts_selbst_hosten#CSS-Datei_und_.woff2-Fonts_anfordern */
+
+    /* Quelle: https://www.cssportal.com/css-tooltip-generator/ */
+    /* Stil für den Infobutton und seinen Inhalt */
+    [data-tooltip] {
+        position: relative;
+        cursor: pointer;
+    }
+
+    [data-tooltip]:before,
+    [data-tooltip]:after {
+        line-height: 1;
+        font-size: .9em;
+        pointer-events: none;
+        position: absolute;
+        box-sizing: border-box;
+        display: none;
+        opacity: 0;
+        filter: drop-shadow(-3px 5px 4px #000000);
+    }
+
+    [data-tooltip]:before {
+        content: "";
+        border: 5px solid transparent;
+        z-index: 100;
+    }
+
+    [data-tooltip]:after {
+        content: attr(data-tooltip);
+        text-align: left;
+        min-width: 37em;
+        max-width: 45em;
+        white-space: pre-line; /* Zeilenumbrüche mit <br> werden angezeigt */
+        overflow: hidden;
+        /* text-overflow: ellipsis;      // Unsicher, was das macht        */
+        font-size: 14px;
+        padding: 10px;
+        border-radius: 6px;
+        background: #8eaf60;
+        color: #000000;
+        z-index: 99;
+    }
+
+    [data-tooltip]:hover:before,
+    [data-tooltip]:hover:after {
+        display: block;
+        opacity: 1;
+    }
+
+    [data-tooltip][data-flow="top"]::before {
+        bottom: 100%;
+        border-bottom-width: 0;
+        border-top-color: #8eaf60;
+    }
+
+    [data-tooltip][data-flow="top"]::after {
+        bottom: calc(100% + 5px);
+    }
+
+    [data-tooltip][data-flow="top"]::before,
+    [data-tooltip][data-flow="top"]::after {
+        left: 50%;
+        transform: translate(-50%, -4px);
+    }
+
+    [data-tooltip][data-flow="bottom"]::before {
+        top: 100%;
+        border-top-width: 0;
+        border-bottom-color: #8eaf60;
+    }
+
+    [data-tooltip][data-flow="bottom"]::after {
+        top: calc(100% + 5px);
+    }
+
+    [data-tooltip][data-flow="bottom"]::before,
+    [data-tooltip][data-flow="bottom"]::after {
+        left: 50%;
+        transform: translate(-50%, 8px);
+    }
+
+    [data-tooltip][data-flow="left"]::before {
+        top: 50%;
+        border-right-width: 0;
+        border-left-color: #8eaf60;
+        left: calc(0em - 5px);
+        transform: translate(-8px, -50%);
+    }
+
+    [data-tooltip][data-flow="left"]::after {
+        top: 50%;
+        right: calc(100% + 5px);
+        transform: translate(-8px, -50%);
+    }
+
+    [data-tooltip][data-flow="right"]::before {
+        top: 50%;
+        border-left-width: 0;
+        border-right-color: #8eaf60;
+        right: calc(0em - 5px);
+        transform: translate(8px, -50%);
+    }
+
+    [data-tooltip][data-flow="right"]::after {
+        top: 50%;
+        left: calc(100% + 5px);
+        transform: translate(8px, -50%);
+    }
+
+    [data-tooltip=""]::after,
+    [data-tooltip=""]::before {
+        display: none !important;
+    }
+
+    ::placeholder {
+        text-align: center; 
+    }
+
+    input{
+        text-align: center;
+    }
+
+    /* CSS-Stil für das Input-Element */
+    #fileSelector {
+        font-family: 'Poppins', sans-serif;
+    }
+    /* Stile für die Container */
+    .assignment-container {
+        display: flex;
+        justify-content: start;
+    }
+
+    a.download-button {
+        font-family: Poppins, sans-serif;
+        padding: 5px 5px;
+        background-color: #5888b0; /* Green button background */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-right: 10px;
+    }
+
+    a.download-button:hover {
+        background-color: #49779c; /* Slightly darker green on hover */
+    } 
+
+    .result-element {
+        margin-bottom: 0px; /* Beispielwert für den Zeilenabstand */
+        margin-top: 0px; /* Beispielwert für den Zeilenabstand */
+    }
+
+    #resultDiv {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+
+    /* Body Styles */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f6f6f6; /* Light green background */
+        margin: 0;
+        padding: 20px;
+    }
+
+    /* Header Styles */
+    h1 {
+        color: #8eaf60; /* Green header text */
+        margin-top: 20px;
+        font-size: 28px;
+        display: inline-block; /* Überschrift als Inline-Block-Element darstellen */
+    }
+
+    #headerImage {
+        position: absolute;
+        top: 10px; /* Vertikale Position vom oberen Rand */
+        right: 10px; /* Horizontale Position vom rechten Rand */
+        height: 50px;
+        width: auto;
+    }
+
+    /* Header Styles */
+    h2 {
+        color: #8eaf60; /* Green header text */
+        margin-top: 20px;
+    }
+    /* Header Styles */
+    h3 {
+        color: #8eaf60; /* Green header text */
+        margin-top: 20px;
+    }
+
+    /* Form Styles */
+    label {
+        display: inline-block; /* Das Label wird in einer Linie dargestellt */
+        margin-right: 10px; /* Abstand zwischen dem Label und dem folgenden Element */
+        font-weight: bold;
+    }
+
+    input[type="number"],
+    select {
+        font-family: Poppins, sans-serif;
+        width:auto;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff; /* White input background */
+    }
+
+    input[type="text"],
+    select {
+        font-family: Poppins, sans-serif;
+        width:auto;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff; /* White input background */
+    }
+
+    /* Button Styles */
+    button {
+        font-family: Poppins, sans-serif;
+        padding: 5px 5px;
+        margin-top: 5px;
+        background-color: #8eaf60; /* Green button background */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }        
+
+    button:hover {
+        background-color: #6c8844; /* Slightly darker green on hover */
+    } 
+
+    /* Button Styles */
+    .button-hide {
+        font-family: Poppins, sans-serif;
+        padding: 5px 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        background-color: rgb(134, 121, 138); /* Green button background */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }        
+
+    .button-hide:hover {
+        background-color: rgb(96, 87, 100); /* Slightly darker green on hover */
+    } 
+
+    #yearInput {
+        font-family: Poppins, sans-serif;
+        width:230px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff; /* White input background */
+    }
+
+    /* Button Styles */
+    .purple-button {
+        font-family: Poppins, sans-serif;
+        padding: 5px 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        background-color: #5888b0;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }        
+
+    .purple-button:hover {
+        background-color: #49779c; /* Slightly darker green on hover */
+    } 
+
+    .button-container {
+        margin-top: 5px; 
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-family: Poppins, sans-serif; /* Schriftart wie für die Buttons */
+        font-size: 13px; /* Vererbt die Schriftgröße von übergeordneten Elementen (z. B. Buttons) */
+    }
+
+    #vehicleContainer {
+        display: flex;
+        align-items: baseline; /* Ausrichtung der Baseline, um sicherzustellen, dass das Label oben bleibt */
+    }
+
+    #vehicleNameFields {
+        display: inline-block;
+        margin-left: 115.5px;
+    }
+
+    #vehicleNameFields input[type="text"] {
+        width: 259px; /* Hier kann die gewünschte Breite festlegen */
+        /* margin-bottom: 1px; */
+    }
+
+    #chargingstationContainer {
+        display: flex;
+        align-items: baseline; /* Ausrichtung der Baseline, um sicherzustellen, dass das Label oben bleibt */  
+    }
+
+    #chargingstationNameFields {
+        display: inline-block;
+        margin-left: 104.5px;
+    }
+
+    #chargingstationNameFields input[type="text"] {
+        width: 189px; 
+        /* margin-bottom: 1px; */
+    }
+
+    #yearInputContainer {
+        display: flex;
+        align-items: baseline; /* Ausrichtung der Baseline, um sicherzustellen, dass das Label oben bleibt */
+    }
+    
+    /* Charts Styles */
+    #charts {
+        margin-top: 20px;
+    }
+
+    /* File Input Styles */
+    #fileInput {
+        font-family: Poppins, sans-serif;
+        padding: 5px 10px;
+        background-color: #8eaf60; /* Green button background */
+        border: none;
+        color: rgb(255, 255, 255);
+        border-radius: 5px; /* Runde Ecken */
+        transition: background-color 0.3s;
+        /* Verstecke das Standard-Browser-Datei-Auswählen-Label */
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* Stil für das unsichtbare Dateiauswählen-Label */
+    #fileInput:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 5px 10px;
+        border-radius: 5px; /* Gleiche Ecken wie das Eingabefeld */
+    }
+
+    /* Stil, wenn der Mauszeiger das Eingabefeld berührt */
+    #fileInput:hover {
+        background-color: #6c8844; /* Slightly darker green on hover */
+    }
+
+    /* Result Styles */
+    #result {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #8eaf60; /* Green result text */
+    }
+
+    #a {
+        font-family: Poppins, sans-serif;
+        padding: 5px 5px;
+        background-color: #8eaf60; /* Green button background */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    a:hover {
+                font-weight: 800;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px; /* Abstand zwischen den Elementen hinzufügen */
+        height: 60px; /* Höhe der Header-Leiste anpassen */
+    }
+
+    .header-title {
+        flex-grow: 1; /* Nimmt den verfügbaren Platz ein, um die Überschrift zu strecken */
+    }
+
+    #headerImage {
+        width: 100px; 
+        height: auto; /* Behält das Seitenverhältnis des Logos bei */
+        margin-right: 60px;
+    }
+
+    .header-text {
+        display: flex;
+        flex-direction: column; /* Überschrift, Bild und Navigation untereinander anordnen */
+        align-items: flex-start; /* Links ausrichten */
+        justify-content: center; /* Vertikal zentrieren */
+        margin-left: 20px; /* Abstand zwischen dem Logo und der Überschrift hinzufügen */
+    }
+
+    .header-text h1 {
+        margin: 0; /* Den Standardabstand des Absatzes entfernen */
+        text-align: left; /* Links ausrichten */
+    }
+
+    nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex; /* Navigationselemente nebeneinander anordnen */
+        justify-content: flex-end; /* Rechtbündige Ausrichtung der Navigation */
+    }
+
+    nav {
+        margin-top: 40px; /* Abstand zwischen dem Logo und dem Navigationsmenü erhöhen */
+    }
+
+    nav li {
+        margin: 0 10px; /* Abstand zwischen den Links hinzufügen */
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #333; /* Farbe der Links anpassen */
+        font-weight: bold;
+    }
+
+    nav b {
+        text-decoration: none;
+        color: #333; /* Farbe der Links anpassen */
+        font-weight: bold;
+    }
+
+    nav a:hover {
+        color: #555; /* Farbe der Links bei Hover anpassen */
+    }
+
+    .fixed-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #e6e6e6;
+        color: #fff;
+        padding: 10px 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 99; /* Z-Achsen-Position auf einen Wert größer als 0 fest */
+    }
+
+    .content {
+        padding-top: 60px; /* Hier sollte der Wert mindestens der Höhe Ihrer Header-Leiste entsprechen */
+    }
+
+    .disabled-button {
+      background-color: #6E6E6E;
+      color: white;
+    }
+
+    .disabled-button:hover {
+      background-color: #4a4a4a;
+      color: white;
+    }
+
+    .active-button {
+      background-color: #8eaf60;
+      color: white;
+    }
+
+    .resultCombined-element {
+        margin-bottom: 0px; /* Beispielwert für den Zeilenabstand */
+        margin-top: 0px; /* Beispielwert für den Zeilenabstand */
+    }
+
+    #resultDivCombined {
+        margin-top: 10px;
+    }
+    
+        
